@@ -22,7 +22,7 @@
       "type": "java.lang.String"
     },
     {
-      "type": "nl.vu.wouter.MyBenchmark",
+      "type": "nl.vu.wouter.BimorphicCallsBenchmark",
       "fields": [
         {
           "name": "bias"
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "type": "nl.vu.wouter.jmh_generated.MyBenchmark_abstractWork_jmhTest",
+      "type": "nl.vu.wouter.jmh_generated.BimorphicCallsBenchmark_abstractWork_jmhTest",
       "methods": [
         {
           "name": "<init>",
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "type": "nl.vu.wouter.jmh_generated.MyBenchmark_interfaceWork_jmhTest",
+      "type": "nl.vu.wouter.jmh_generated.BimorphicCallsBenchmark_interfaceWork_jmhTest",
       "methods": [
         {
           "name": "<init>",
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "type": "nl.vu.wouter.jmh_generated.MyBenchmark_jmhType_B2",
+      "type": "nl.vu.wouter.jmh_generated.BimorphicCallsBenchmark_jmhType_B2",
       "fields": [
         {
           "name": "setupInvocationMutex"
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "type": "nl.vu.wouter.jmh_generated.MyBenchmark_staticWork_jmhTest",
+      "type": "nl.vu.wouter.jmh_generated.BimorphicCallsBenchmark_staticWork_jmhTest",
       "methods": [
         {
           "name": "<init>",
