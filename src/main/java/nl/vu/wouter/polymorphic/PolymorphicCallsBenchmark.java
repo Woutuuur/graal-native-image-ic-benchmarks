@@ -22,8 +22,8 @@ import java.util.stream.IntStream;
 
 
 @Fork(0)
-@Warmup(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 10, time = 1, timeUnit = TimeUnit.SECONDS)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @State(Scope.Benchmark)
@@ -33,13 +33,13 @@ public class PolymorphicCallsBenchmark {
     private int count;
 
     @Param("1")
-    private int ratio0;
+    protected int ratio0;
 
     @Param("1")
-    private int ratio1;
+    protected int ratio1;
 
     @Param("1")
-    private int ratio2;
+    protected int ratio2;
 
     private Data[] datas;
 
