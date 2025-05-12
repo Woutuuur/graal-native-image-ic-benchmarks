@@ -58,7 +58,7 @@ public class BimorphicCallsBenchmark {
     @Benchmark
     public void staticWork() {
         for (Data data : datas) {
-            data.doStaticWork();
+            data.doStaticWorkBySwitchCase();
         }
     }
 
