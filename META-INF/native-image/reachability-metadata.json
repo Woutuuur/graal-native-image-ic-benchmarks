@@ -112,6 +112,14 @@
       ]
     },
     {
+      "type": "nl.vu.wouter.polymorphic.BiasedPolymorphicCallsBenchmark",
+      "fields": [
+        {
+          "name": "bias"
+        }
+      ]
+    },
+    {
       "type": "nl.vu.wouter.polymorphic.PolymorphicCallsBenchmark",
       "fields": [
         {
@@ -125,6 +133,77 @@
         },
         {
           "name": "ratio2"
+        }
+      ]
+    },
+    {
+      "type": "nl.vu.wouter.polymorphic.jmh_generated.BiasedPolymorphicCallsBenchmark_abstractWork_jmhTest",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "abstractWork_AverageTime",
+          "parameterTypes": [
+            "org.openjdk.jmh.runner.InfraControl",
+            "org.openjdk.jmh.infra.ThreadParams"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "nl.vu.wouter.polymorphic.jmh_generated.BiasedPolymorphicCallsBenchmark_interfaceWork_jmhTest",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "interfaceWork_AverageTime",
+          "parameterTypes": [
+            "org.openjdk.jmh.runner.InfraControl",
+            "org.openjdk.jmh.infra.ThreadParams"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "nl.vu.wouter.polymorphic.jmh_generated.BiasedPolymorphicCallsBenchmark_jmhType_B2",
+      "fields": [
+        {
+          "name": "setupInvocationMutex"
+        },
+        {
+          "name": "setupIterationMutex"
+        },
+        {
+          "name": "setupTrialMutex"
+        },
+        {
+          "name": "tearInvocationMutex"
+        },
+        {
+          "name": "tearIterationMutex"
+        },
+        {
+          "name": "tearTrialMutex"
+        }
+      ]
+    },
+    {
+      "type": "nl.vu.wouter.polymorphic.jmh_generated.BiasedPolymorphicCallsBenchmark_staticWork_jmhTest",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "staticWork_AverageTime",
+          "parameterTypes": [
+            "org.openjdk.jmh.runner.InfraControl",
+            "org.openjdk.jmh.infra.ThreadParams"
+          ]
         }
       ]
     },
