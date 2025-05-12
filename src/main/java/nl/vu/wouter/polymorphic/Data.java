@@ -12,36 +12,31 @@ public class Data {
     private final Worker worker;
     private final byte[] data;
 
+    private final byte id;
+
     private AbstractWorker getAbstractWorker(byte id) {
-       switch (id) {
-           case 0:
-               return worker0;
-           case 1:
-               return worker1;
-           case 2:
-               return worker2;
-           default:
-               throw new IllegalArgumentException("Unknown worker id: " + id);
-       }
+        return switch (id) {
+            case 0 -> worker0;
+            case 1 -> worker1;
+            case 2 -> worker2;
+            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+        };
     }
 
     private Worker getInterfaceWorker(byte id) {
-        switch (id) {
-            case 0:
-                return worker0;
-            case 1:
-                return worker1;
-            case 2:
-                return worker2;
-            default:
-                throw new IllegalArgumentException("Unknown worker id: " + id);
-        }
+        return switch (id) {
+            case 0 -> worker0;
+            case 1 -> worker1;
+            case 2 -> worker2;
+            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+        };
     }
 
     public Data(byte id, byte[] data) {
         this.data = data;
         this.abstractWorker = getAbstractWorker(id);
         this.worker = getInterfaceWorker(id);
+        this.id = id;
     }
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
@@ -55,8 +50,13 @@ public class Data {
     }
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
-    public int doStaticWork() {
-        return Worker0.staticWork(data);
+    public int doStaticWorkBySwitchCase() {
+        return switch (id) {
+            case 0 -> Worker0.staticWork(data);
+            case 1 -> Worker1.staticWork(data);
+            case 2 -> Worker2.staticWork(data);
+            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+        };
     }
 
 }

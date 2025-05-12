@@ -32,7 +32,8 @@ public class PolymorphicCallsBenchmark {
     @Param("100000")
     private int count;
 
-    @Param("1")
+    // 0% (i.e. bimorphic), 33%, 50%, 67%, 90%, 95%, 98%
+    @Param({"0", "1", "2", "3", "18", "38", "98"})
     protected int ratio0;
 
     @Param("1")
@@ -62,6 +63,7 @@ public class PolymorphicCallsBenchmark {
         })
         .collect(Collectors.toList());
 
+
         Collections.shuffle(dataList, r);
 
         datas = dataList.toArray(new Data[0]);
@@ -70,7 +72,7 @@ public class PolymorphicCallsBenchmark {
     @Benchmark
     public void staticWork() {
         for (Data data : datas) {
-            data.doStaticWork();
+            data.doStaticWorkBySwitchCase();
         }
     }
 

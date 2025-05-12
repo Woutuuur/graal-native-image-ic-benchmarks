@@ -1,5 +1,6 @@
 package nl.vu.wouter.bimorphic;
 
+import nl.vu.wouter.polymorphic.Worker2;
 import org.openjdk.jmh.annotations.CompilerControl;
 
 public class Data {
@@ -11,32 +12,29 @@ public class Data {
     private final Worker worker;
     private final byte[] data;
 
+    private final byte id;
+
     private AbstractWorker getAbstractWorker(byte id) {
-       switch (id) {
-           case 0:
-               return worker0;
-           case 1:
-               return worker1;
-           default:
-               throw new IllegalArgumentException("Unknown worker id: " + id);
-       }
+        return switch (id) {
+            case 0 -> worker0;
+            case 1 -> worker1;
+            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+        };
     }
 
     private Worker getInterfaceWorker(byte id) {
-        switch (id) {
-            case 0:
-                return worker0;
-            case 1:
-                return worker1;
-            default:
-                throw new IllegalArgumentException("Unknown worker id: " + id);
-        }
+        return switch (id) {
+            case 0 -> worker0;
+            case 1 -> worker1;
+            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+        };
     }
 
     public Data(byte id, byte[] data) {
         this.data = data;
         this.abstractWorker = getAbstractWorker(id);
         this.worker = getInterfaceWorker(id);
+        this.id = id;
     }
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
@@ -50,8 +48,13 @@ public class Data {
     }
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
-    public int doStaticWork() {
-        return Worker0.staticWork(data);
+    public int doStaticWorkBySwitchCase() {
+        return switch (id) {
+            case 0 -> nl.vu.wouter.polymorphic.Worker0.staticWork(data);
+            case 1 -> nl.vu.wouter.polymorphic.Worker1.staticWork(data);
+            case 2 -> Worker2.staticWork(data);
+            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+        };
     }
 
 }
