@@ -1,4 +1,4 @@
-package nl.vu.wouter;
+package nl.vu.wouter.bimorphic;
 
 public interface Worker {
 

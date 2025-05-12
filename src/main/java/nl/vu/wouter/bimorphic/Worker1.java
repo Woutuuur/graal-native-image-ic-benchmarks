@@ -1,6 +1,6 @@
-package nl.vu.wouter;
+package nl.vu.wouter.bimorphic;
 
-public class Worker0 extends AbstractWorker implements Worker {
+public class Worker1 extends AbstractWorker implements Worker {
 
     @Override
     public int work(byte[] data) {
