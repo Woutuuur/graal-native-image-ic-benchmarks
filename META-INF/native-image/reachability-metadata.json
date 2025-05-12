@@ -19,7 +19,15 @@
       "type": "java.lang.Object"
     },
     {
-      "type": "java.lang.String"
+      "type": "java.lang.String",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
     },
     {
       "type": "nl.vu.wouter.bimorphic.BimorphicCallsBenchmark",
