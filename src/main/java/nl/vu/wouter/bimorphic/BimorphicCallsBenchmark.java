@@ -41,14 +41,14 @@ public class BimorphicCallsBenchmark {
         Random r = new Random(0);
 
         List<Data> dataList = IntStream.range(0, count)
-                .map(i -> i < count * bias ? 1 : 0)
-                .mapToObj(id -> {
-                    byte[] randomData = new byte[10];
-                    r.nextBytes(randomData);
+            .map(i -> i < count * bias ? 1 : 0)
+            .mapToObj(id -> {
+                byte[] randomData = new byte[10];
+                r.nextBytes(randomData);
 
-                    return new Data((byte) id, randomData);
-                })
-                .collect(Collectors.toList());
+                return new Data((byte) id, randomData);
+            })
+            .collect(Collectors.toList());
 
         Collections.shuffle(dataList, r);
 

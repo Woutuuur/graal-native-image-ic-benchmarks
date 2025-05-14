@@ -54,15 +54,14 @@ public class PolymorphicCallsBenchmark {
         IntUnaryOperator idxToId = idx -> idx < num0 ? 0 : idx < num0 + num1 ? 1 : 2;
 
         List<Data> dataList = IntStream.range(0, count)
-        .map(idxToId)
-        .mapToObj(id -> {
-            byte[] randomData = new byte[10];
-            r.nextBytes(randomData);
+            .map(idxToId)
+            .mapToObj(id -> {
+                byte[] randomData = new byte[10];
+                r.nextBytes(randomData);
 
-            return new Data((byte) id, randomData);
-        })
-        .collect(Collectors.toList());
-
+                return new Data((byte) id, randomData);
+            })
+            .collect(Collectors.toList());
 
         Collections.shuffle(dataList, r);
 
