@@ -55,7 +55,7 @@ public class Data {
             case 0 -> Worker0.staticWork(data);
             case 1 -> Worker1.staticWork(data);
             case 2 -> Worker2.staticWork(data);
-            default -> throw new IllegalArgumentException("Unknown worker id: " + id);
+            default -> 0;
         };
     }
 
