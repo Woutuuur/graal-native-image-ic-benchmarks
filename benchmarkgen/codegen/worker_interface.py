@@ -10,13 +10,13 @@ class WorkerInterface(JavaCodeGenerator):
     }}"""
 
     @staticmethod
-    def generate_code() -> str:
+    def generate_code(line_sep = '\n\n\t') -> str:
         return f"""package {PACKAGE_NAME};
 
 public interface Worker {{
 
     int work(byte[] data);
 
-    {'\n\n\t'.join(map(WorkerInterface.generate_method_impl, range(MAX_METHODS_PER_CLASS)))}
+    {line_sep.join(map(WorkerInterface.generate_method_impl, range(MAX_METHODS_PER_CLASS)))}
 
 }}"""

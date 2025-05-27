@@ -95,13 +95,13 @@ class WorkerImplementation(JavaCodeGenerator):
         return data.length + {self.info.id * 2 + 1};
     }}"""
 
-    def generate_code(self) -> str:
+    def generate_code(self, line_sep = '\n\n') -> str:
         all_methods = self.generate_basic_methods() + self.generate_inherited_methods() + self.generate_unique_methods() + [self.generate_static_work_method()]
 
         return f"""package {PACKAGE_NAME};
 
 public class Worker{self.info.id} {generate_inheritance_clause(self.info)} {{
 
-{'\n\n'.join(all_methods)}
+{line_sep.join(all_methods)}
 
 }}"""

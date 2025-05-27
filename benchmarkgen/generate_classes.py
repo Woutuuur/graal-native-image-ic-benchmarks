@@ -35,7 +35,7 @@ def main():
     random.seed(42)
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    for old_file in OUTPUT_DIR.glob('*.java'):
+    for old_file in iter(OUTPUT_DIR.glob('*.java')):
         old_file.unlink()
 
     workers = create_workers()

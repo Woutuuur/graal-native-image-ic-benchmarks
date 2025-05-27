@@ -25,6 +25,8 @@ class DataClass(JavaCodeGenerator):
         return '\n\t\t\t'.join(f"case {w.id} -> Worker{w.id}.staticWork(data);" for w in self.workers)
 
     def generate_code(self) -> str:
+        work_method_sep = '\n\t\t\t'
+
         return f"""package {PACKAGE_NAME};
 
 import org.openjdk.jmh.annotations.CompilerControl;
@@ -72,7 +74,7 @@ public class Data {{
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public int doAbstractWork() {{
         return abstractWorker.abstractWork(data) + switch (this.id % {MAX_METHODS_PER_CLASS}) {{
-            {'\n\t\t\t'.join(f'case {i} -> abstractWorker.abstractExtraWork{i}(data);' for i in range(MAX_METHODS_PER_CLASS))}
+            {work_method_sep.join(f'case {i} -> abstractWorker.abstractExtraWork{i}(data);' for i in range(MAX_METHODS_PER_CLASS))}
             default -> 0;
         }};
     }}
@@ -80,7 +82,7 @@ public class Data {{
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     public int doInterfaceWork() {{
         return worker.work(data) + switch (this.id % {MAX_METHODS_PER_CLASS}) {{
-            {'\n\t\t\t'.join(f'case {i} -> worker.extraWork{i}(data);' for i in range(MAX_METHODS_PER_CLASS))}
+            {work_method_sep.join(f'case {i} -> worker.extraWork{i}(data);' for i in range(MAX_METHODS_PER_CLASS))}
             default -> 0;
         }};
     }}

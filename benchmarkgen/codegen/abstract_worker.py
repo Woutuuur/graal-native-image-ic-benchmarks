@@ -10,13 +10,13 @@ class AbstractWorker(JavaCodeGenerator):
     }}"""
 
     @staticmethod
-    def generate_code() -> str:
+    def generate_code(line_sep = '\n\n') -> str:
         return f"""package {PACKAGE_NAME};
 
 public abstract class AbstractWorker {{
 
     public abstract int abstractWork(byte[] data);
 
-{'\n\n'.join(map(AbstractWorker.generate_method_impl, range(MAX_METHODS_PER_CLASS)))}
+{line_sep.join(map(AbstractWorker.generate_method_impl, range(MAX_METHODS_PER_CLASS)))}
 
 }}"""
